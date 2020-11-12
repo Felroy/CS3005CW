@@ -2,3 +2,4 @@
 
 2D Platformer 
 
+Commit after every major update
