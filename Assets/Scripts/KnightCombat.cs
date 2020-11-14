@@ -7,6 +7,7 @@ public class KnightCombat : MonoBehaviour
     public Animator animation1;
     public Transform attackLoc;
     public float attackRange = 0.5f;
+    public float attackDamage;
     public LayerMask enemy;
 
     // Start is called before the first frame update
@@ -14,18 +15,30 @@ public class KnightCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.Mouse0)){
+        if(Input.GetKeyDown(KeyCode.Mouse0)){
             Attack();
-        }
+            Collider2D[] damagedEnemy = Physics2D.OverlapCircleAll(attackLoc.position, attackRange, enemy);
+            for(int i = 0; i < damagedEnemy.Length; i++){
+                damagedEnemy[i].GetComponent<enemyHP>().takeDamage(attackDamage);
+            }
+
+
     }
 
 
    void Attack(){
 
     animation1.SetTrigger("Attack");    
-    Collider2D[] damagedEnemy = Physics2D.OverlapCircleAll(attackLoc.position, attackRange, enemy);
+                   
 
+    }    
 
+    
+}
 
+void OnDrawGizmosSelected(){
+    if(attackLoc == null)
+    return;
+    Gizmos.DrawWireSphere(attackLoc.position, attackRange);
 }
 }

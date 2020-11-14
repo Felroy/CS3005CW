@@ -20,8 +20,11 @@ public class enemyHP : MonoBehaviour
 
     public void takeDamage(float damage){
         currentEnemyHP = currentEnemyHP - damage;
+        Debug.Log(currentEnemyHP);
         if (currentEnemyHP <= 0){
+            
             kill();
+            
         }
     }
 
