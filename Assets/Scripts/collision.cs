@@ -26,6 +26,10 @@ public class collision : MonoBehaviour
             myPC.removeForce();
             Instantiate(explosionEffect, transform.position, transform.rotation);
             Destroy(gameObject);
+            if(other.tag == "Enemy"){
+                enemyHP hurtEnemy = other.gameObject.GetComponent<enemyHP>();
+                hurtEnemy.takeDamage(fireDamage);
+            }
         }
     }
 
@@ -34,6 +38,10 @@ public class collision : MonoBehaviour
             myPC.removeForce();
             Instantiate(explosionEffect, transform.position, transform.rotation);
             Destroy(gameObject);
+            if(other.tag == "Enemy"){
+                enemyHP hurtEnemy = other.gameObject.GetComponent<enemyHP>();
+                hurtEnemy.takeDamage(fireDamage);
+            }
         }
     }
 }
