@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class KnightHP : MonoBehaviour
 {
@@ -8,11 +9,23 @@ public class KnightHP : MonoBehaviour
     public Animator deathAnim;
     private float currentHP;
     KnightController deathMovement;
-    // Start is called before the first frame update
+
+    //playerHPUI HUD variables
+    public Slider hpSlider;
+    public Gradient gradient;
+    public Image fill;
+    
+
+
     void Start()
     {
         currentHP = maxKnightHP;
         deathMovement = GetComponent<KnightController>();
+
+        hpSlider.maxValue = maxKnightHP;
+        hpSlider.value = maxKnightHP;
+
+        fill.color = gradient.Evaluate(1f);
 
     }
 
@@ -27,6 +40,10 @@ public class KnightHP : MonoBehaviour
             return;
         }
         currentHP -= damage;
+        hpSlider.value = currentHP;
+        fill.color = gradient.Evaluate(hpSlider.normalizedValue);
+
+        
 
         if (currentHP <= 0){
             kill();
