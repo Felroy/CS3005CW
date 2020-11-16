@@ -28,6 +28,9 @@ public class KnightController : MonoBehaviour
     public GameObject fire;
     float fireSpeed = 1f;
     float fireNext = 0f;
+    //##
+    //KnightCombat jumper;
+   
     
     
 
@@ -36,33 +39,30 @@ public class KnightController : MonoBehaviour
     {
         myKnight = GetComponent<Rigidbody2D>();
         myAnimation = GetComponent<Animator>();
+        //jumper = GetComponentInParent<KnightCombat>();
 
         facingRight = true;       
         
     }
 
     void Update(){
-        if(grounded && Input.GetAxis("Jump")>0){
-            grounded = false;
-            myAnimation.SetBool("onGround", grounded);
-            myKnight.AddForce(new Vector2(0, jumpHeight));
-        }
-                    
+       
                        
     }
 
    
     
      void FixedUpdate()
-    {
-
-        //check if knight is on the ground
-        grounded = Physics2D.OverlapCircle(groundCheck.position, checkGround, groundLayer); 
-        myAnimation.SetBool("onGround", grounded);
-
-        myAnimation.SetFloat("verticalSpeed", myKnight.velocity.y);
-
-
+    { if(grounded && Input.GetAxis("Jump")>0){
+            grounded = false;
+            myAnimation.SetBool("inAir", grounded);
+            myKnight.AddForce(new Vector2(0, jumpHeight));
+                        
+                       
+        }
+             
+        checkIfGround();        
+                  
         //change player direction
         float move = Input.GetAxis("Horizontal");
         myAnimation.SetFloat("speed", Mathf.Abs(move));
@@ -93,6 +93,12 @@ public class KnightController : MonoBehaviour
             fireRocket();
         }
                        
+        
+    }
+    public void checkIfGround(){
+        //check if knight is on the ground
+        grounded = Physics2D.OverlapCircle(groundCheck.position, checkGround, groundLayer); 
+        myAnimation.SetBool("inAir", grounded);
         
     }
   

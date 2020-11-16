@@ -11,7 +11,11 @@ public class KnightHP : MonoBehaviour
     KnightController deathMovement;
 
     //playerHPUI HUD variables
+    private bool isDamaged;
+    Color splatColor = new Color(15f, 0f, 0f, 0.5f);
+    float fade = 5f;
     public Slider hpSlider;
+    public Image hitSplat;
     public Gradient gradient;
     public Image fill;
     
@@ -27,12 +31,20 @@ public class KnightHP : MonoBehaviour
 
         fill.color = gradient.Evaluate(1f);
 
+        isDamaged = false;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(isDamaged){
+            hitSplat.color = splatColor;
+        }
+        else {
+            hitSplat.color = Color.Lerp(hitSplat.color, Color.clear, fade= Time.deltaTime);
+        }
+        isDamaged = false;
     }
 
     public void takeDamage(float damage){
@@ -41,19 +53,21 @@ public class KnightHP : MonoBehaviour
         }
         currentHP -= damage;
         hpSlider.value = currentHP;
+        isDamaged = true;
         fill.color = gradient.Evaluate(hpSlider.normalizedValue);
 
         
 
         if (currentHP <= 0){
+            deathAnim.SetTrigger("isDead");
             kill();
         }
 
     }
 
     public void kill(){
-        deathAnim.SetTrigger("isDead");
-        Destroy(gameObject);
+        
+        Destroy(gameObject, 2f);
 
     }
 

@@ -10,17 +10,30 @@ public class KnightCombat : MonoBehaviour
     public float attackDamage;
     public LayerMask enemy;
 
-    // Start is called before the first frame update
-    
-    // Update is called once per frame
+    //jumping
+    public bool grounded;
+    void Start(){
+        
+    }
+
     void Update()
     {
+        attackCombat();
+    }
+
+    void FixedUpdate(){
+       
+    }
+
+    public void attackCombat(){
         if(Input.GetKeyDown(KeyCode.Mouse0)){
             Attack();
             Collider2D[] damagedEnemy = Physics2D.OverlapCircleAll(attackLoc.position, attackRange, enemy);
             for(int i = 0; i < damagedEnemy.Length; i++){
                 damagedEnemy[i].GetComponent<enemyHP>().takeDamage(attackDamage);
             }
+        }       
+
 
 
     }
@@ -28,17 +41,21 @@ public class KnightCombat : MonoBehaviour
 
    void Attack(){
 
-    animation1.SetTrigger("Attack");    
+        animation1.SetTrigger("Attack");    
                    
 
     }    
 
     
-}
 
-void OnDrawGizmosSelected(){
-    if(attackLoc == null)
-    return;
+    void OnDrawGizmosSelected(){
+    if(attackLoc == null){
+        return;
+    }
+    
     Gizmos.DrawWireSphere(attackLoc.position, attackRange);
 }
+
 }
+
+

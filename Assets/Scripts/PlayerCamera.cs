@@ -19,7 +19,7 @@ public class PlayerCamera : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (transform != null){
+        if (playerLoc != null){
             Vector3 targetCamLoc = playerLoc.position + offset;
             transform.position = Vector3.Lerp (transform.position, targetCamLoc, camIntensity*Time.deltaTime);
             if(transform.position.y < minimumY) {
@@ -27,10 +27,7 @@ public class PlayerCamera : MonoBehaviour
             }
 
         }
-        else if (transform == null){
-            return;
-        }
-        
+                
         
     }
 }
