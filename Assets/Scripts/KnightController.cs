@@ -28,8 +28,10 @@ public class KnightController : MonoBehaviour
     public GameObject fire;
     float fireSpeed = 1f;
     float fireNext = 0f;
-    //##
+    
     //KnightCombat jumper;
+    KnightHP knig;
+    
    
     
     
@@ -40,6 +42,8 @@ public class KnightController : MonoBehaviour
         myKnight = GetComponent<Rigidbody2D>();
         myAnimation = GetComponent<Animator>();
         //jumper = GetComponentInParent<KnightCombat>();
+        knig = GetComponentInParent<KnightHP>();
+       
 
         facingRight = true;       
         
@@ -47,13 +51,8 @@ public class KnightController : MonoBehaviour
 
     void Update(){
        
-                       
-    }
-
-   
-    
-     void FixedUpdate()
-    { if(grounded && Input.GetAxis("Jump")>0){
+       if(knig.dead == false){
+         if(grounded && Input.GetKeyDown(KeyCode.Space)){
             grounded = false;
             myAnimation.SetBool("inAir", grounded);
             myKnight.AddForce(new Vector2(0, jumpHeight));
@@ -61,8 +60,19 @@ public class KnightController : MonoBehaviour
                        
         }
              
-        checkIfGround();        
+        checkIfGround();     
+        }   
                   
+                       
+    }
+
+   
+    
+     void FixedUpdate(){
+     
+     
+
+     
         //change player direction
         float move = Input.GetAxis("Horizontal");
         myAnimation.SetFloat("speed", Mathf.Abs(move));

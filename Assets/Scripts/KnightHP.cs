@@ -12,6 +12,8 @@ public class KnightHP : MonoBehaviour
 
     //playerHPUI HUD variables
     private bool isDamaged;
+    public bool dead;
+  
     Color splatColor = new Color(15f, 0f, 0f, 0.5f);
     float fade = 5f;
     public Slider hpSlider;
@@ -51,6 +53,7 @@ public class KnightHP : MonoBehaviour
         if(damage <= 0){
             return;
         }
+        
         currentHP -= damage;
         hpSlider.value = currentHP;
         isDamaged = true;
@@ -59,15 +62,18 @@ public class KnightHP : MonoBehaviour
         
 
         if (currentHP <= 0){
-            deathAnim.SetTrigger("isDead");
+                      
             kill();
         }
 
     }
 
     public void kill(){
-        
-        Destroy(gameObject, 2f);
+        if(!dead){
+        deathAnim.SetBool("isDeado", !dead);
+        Destroy(gameObject, 1);
+        dead = true;
+        }
 
     }
 
