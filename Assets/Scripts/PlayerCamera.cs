@@ -4,19 +4,17 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
+    float minimumY; 
     public Transform playerLoc;
     public float camIntensity;
-    Vector3 offset;
-    float minimumY; 
+    Vector3 offset;    
 
-    // Start is called before the first frame update
     void Start()
     {
         offset = transform.position - playerLoc.position;
         minimumY = transform.position.y;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (playerLoc != null){
@@ -25,9 +23,6 @@ public class PlayerCamera : MonoBehaviour
             if(transform.position.y < minimumY) {
             transform.position = new Vector3 (transform.position.x, minimumY, transform.position.z);
             }
-
-        }
-                
-        
+        }               
     }
 }

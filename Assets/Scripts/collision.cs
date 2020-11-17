@@ -2,25 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class collision : MonoBehaviour
-{
+public class collision : MonoBehaviour{
+    public GameObject explosionEffect;
     public float fireDamage;
     ProjectileController myPC;
-
-    public GameObject explosionEffect;
-    // Start is called before the first frame update
+    
     void Awake()
     {
-        myPC = GetComponentInParent<ProjectileController>();
-        
+        myPC = GetComponentInParent<ProjectileController>();        
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    //collision functions for fireball
     void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.layer == LayerMask.NameToLayer("basicEnemy")){
             myPC.removeForce();

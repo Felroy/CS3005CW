@@ -3,24 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class KnightHP : MonoBehaviour
-{
+public class KnightHP : MonoBehaviour{
+    private float currentHP;
     public float maxKnightHP;
     public Animator deathAnim;
-    private float currentHP;
+    
     KnightController deathMovement;
 
     //playerHPUI HUD variables
     private bool isDamaged;
-    public bool dead;
-  
+    public bool dead;  
     Color splatColor = new Color(15f, 0f, 0f, 0.5f);
-    float fade = 5f;
+    float fade = 3f;
     public Slider hpSlider;
     public Image hitSplat;
     public Gradient gradient;
-    public Image fill;
-    
+    public Image fill;    
 
 
     void Start()
@@ -34,10 +32,8 @@ public class KnightHP : MonoBehaviour
         fill.color = gradient.Evaluate(1f);
 
         isDamaged = false;
-
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if(isDamaged){
@@ -52,17 +48,13 @@ public class KnightHP : MonoBehaviour
     public void takeDamage(float damage){
         if(damage <= 0){
             return;
-        }
-        
+        }        
         currentHP -= damage;
         hpSlider.value = currentHP;
         isDamaged = true;
-        fill.color = gradient.Evaluate(hpSlider.normalizedValue);
+        fill.color = gradient.Evaluate(hpSlider.normalizedValue);        
 
-        
-
-        if (currentHP <= 0){
-                      
+        if (currentHP <= 0){                      
             kill();
         }
 

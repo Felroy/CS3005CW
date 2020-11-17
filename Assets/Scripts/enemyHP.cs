@@ -8,11 +8,12 @@ public class enemyHP : MonoBehaviour
     private float currentEnemyHP;
     public float enemyMaxHP;
     public GameObject enemyDeathFX;
+    
+    //enemy HP HUD variables
     public Slider enemyHPSlider;  
     public Gradient enemyGrad;
     public Image fill;
-    
-    // Start is called before the first frame update
+
     void Start()
     {
         currentEnemyHP = enemyMaxHP;
@@ -20,12 +21,6 @@ public class enemyHP : MonoBehaviour
         enemyHPSlider.value = currentEnemyHP;
 
         fill.color = enemyGrad.Evaluate(1f);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void takeDamage(float damage){
@@ -36,10 +31,8 @@ public class enemyHP : MonoBehaviour
 
         enemyHPSlider.value = currentEnemyHP;
         fill.color = enemyGrad.Evaluate(enemyHPSlider.normalizedValue);
-        if (currentEnemyHP <= 0){
-            
-            kill();
-            
+        if (currentEnemyHP <= 0){            
+            kill();            
         }
     }
 

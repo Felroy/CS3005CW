@@ -20,59 +20,40 @@ public class KnightController : MonoBehaviour
     public float jumpHeight;
 
     //dash
-    public float dashForce;
     private float DashDirection;
-
+    public float dashForce;
+    
     //fireball
-    public Transform fireLoc;
-    public GameObject fire;
     float fireSpeed = 1f;
     float fireNext = 0f;
-    
-    //KnightCombat jumper;
-    KnightHP knig;
-    
-   
-    
-    
-
+    public Transform fireLoc;
+    public GameObject fire;        
+    KnightHP knight;    
 
     void Start()
     {
         myKnight = GetComponent<Rigidbody2D>();
-        myAnimation = GetComponent<Animator>();
-        //jumper = GetComponentInParent<KnightCombat>();
-        knig = GetComponentInParent<KnightHP>();
+        myAnimation = GetComponent<Animator>();        
+        knight = GetComponentInParent<KnightHP>();
        
 
         facingRight = true;       
         
     }
 
-    void Update(){
-       
-       if(knig.dead == false){
-         if(grounded && Input.GetKeyDown(KeyCode.Space)){
-            grounded = false;
-            myAnimation.SetBool("inAir", grounded);
-            myKnight.AddForce(new Vector2(0, jumpHeight));
-                        
-                       
-        }
-             
+    void Update(){       
+       if(knight.dead == false){
+           if(grounded && Input.GetKeyDown(KeyCode.Space)){
+               grounded = false;
+               myAnimation.SetBool("inAir", grounded);
+               myKnight.AddForce(new Vector2(0, jumpHeight));                                                  
+            }             
         checkIfGround();     
-        }   
-                  
-                       
-    }
-
-   
+        }
+    }                      
     
-     void FixedUpdate(){
-     
-     
-
-     
+    void FixedUpdate(){  
+          
         //change player direction
         float move = Input.GetAxis("Horizontal");
         myAnimation.SetFloat("speed", Mathf.Abs(move));
@@ -85,14 +66,10 @@ public class KnightController : MonoBehaviour
         }
 
         //dash function
-        if(Input.GetKey(KeyCode.LeftShift) && move != 0){
-            
-            
+        if(Input.GetKey(KeyCode.LeftShift) && move != 0){           
             DashDirection = (int)move;
             myAnimation.SetBool("iskey", true);
-            myKnight.velocity= new Vector2 (DashDirection * dashForce, myKnight.velocity.y);
-            
-            
+            myKnight.velocity= new Vector2 (DashDirection * dashForce, myKnight.velocity.y);       
         }
         else {
             myAnimation.SetBool("iskey", false);
@@ -101,15 +78,12 @@ public class KnightController : MonoBehaviour
          //fireball action
         if(Input.GetKey(KeyCode.Mouse1)){
             fireRocket();
-        }
-                       
-        
+        }                      
     }
     public void checkIfGround(){
         //check if knight is on the ground
         grounded = Physics2D.OverlapCircle(groundCheck.position, checkGround, groundLayer); 
-        myAnimation.SetBool("inAir", grounded);
-        
+        myAnimation.SetBool("inAir", grounded);        
     }
   
     void flip(){
@@ -119,8 +93,7 @@ public class KnightController : MonoBehaviour
         transform.localScale = theScale;
     }
 
-    void fireRocket(){
-        
+    void fireRocket(){        
         if(Time.time > fireNext){
             fireNext = Time.time + fireSpeed;
             if(facingRight){

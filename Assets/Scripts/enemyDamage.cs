@@ -8,18 +8,14 @@ public class enemyDamage : MonoBehaviour
     public float damageRate;
     public float damageRecoil;
     float nextDamage;
-    // Start is called before the first frame update
+    
     void Start()
     {
         nextDamage = 0f;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-     void OnTriggerEnter2D (Collider2D other){
+    
+    //take damage when object with Player tag collides with enemy
+    void OnTriggerEnter2D (Collider2D other){
          if(other.tag == "Player" && nextDamage<Time.time){
             KnightHP knightHP = other.gameObject.GetComponent<KnightHP>();
             knightHP.takeDamage(damage);
@@ -29,6 +25,7 @@ public class enemyDamage : MonoBehaviour
         }
     }
 
+    //take damage when object with Player tag stays in contact with enemy
     void OnTriggerStay2D (Collider2D other){
         if(other.tag == "Player" && nextDamage<Time.time){
             KnightHP knightHP = other.gameObject.GetComponent<KnightHP>();
@@ -40,7 +37,7 @@ public class enemyDamage : MonoBehaviour
     }
     
    
-
+    //add recoil force to push back player upon taking damage
     void recoil(Transform pushedObject){
         Vector2 recoilDirection = new Vector2(0, pushedObject.position.y - transform.position.y).normalized;
         recoilDirection*=damageRecoil;
