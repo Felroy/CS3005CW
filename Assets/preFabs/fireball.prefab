@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6049517266692865492}
   - component: {fileID: 6049517266692865494}
   - component: {fileID: -2774307825908559516}
+  - component: {fileID: 3510511388244599285}
   m_Layer: 0
   m_Name: fireball
   m_TagString: Untagged
@@ -48,6 +49,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -71,8 +73,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2c961366528f28c458c619797d0bbb2f, type: 3}
+  m_SortingOrder: 4
+  m_Sprite: {fileID: 21300000, guid: 827412c064980044da53686fae1670db, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -111,6 +113,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a251a098ae7284418d93a3b22f71dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireDamage: 5
   explosionEffect: {fileID: 8258555247162207264, guid: dea4c609b0469a3459ab5250981ed916,
     type: 3}
+  fireDamage: 5
+--- !u!95 &3510511388244599285
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6049517266692865495}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8bb27ee285a61d14f81fcab44f04adc6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -28,14 +28,14 @@ public class KnightController : MonoBehaviour
     float fireSpeed = 1f;
     float fireNext = 0f;
     public Transform fireLoc;
-    public GameObject fire;        
+    public GameObject fire;     
     KnightHP knight;    
 
     void Start()
     {
         myKnight = GetComponent<Rigidbody2D>();
         myAnimation = GetComponent<Animator>();        
-        knight = GetComponentInParent<KnightHP>();             
+        knight = GetComponentInParent<KnightHP>();           
 
         facingRight = true;       
         
@@ -100,6 +100,7 @@ public class KnightController : MonoBehaviour
             fireNext = Time.time + fireSpeed;
             if(facingRight){
                 Instantiate(fire, fireLoc.position, Quaternion.Euler(new Vector3(0,0,0)));
+
             }
             else if(!facingRight){
                 Instantiate(fire, fireLoc.position, Quaternion.Euler(new Vector3(0,0,180f)));
