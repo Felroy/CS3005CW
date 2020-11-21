@@ -22,7 +22,8 @@ public class KnightController : MonoBehaviour
     //dash
     private float DashDirection;
     public float dashForce;
-    
+    public CircleCollider2D head;
+        
     //fireball
     float fireSpeed = 1f;
     float fireNext = 0f;
@@ -34,8 +35,7 @@ public class KnightController : MonoBehaviour
     {
         myKnight = GetComponent<Rigidbody2D>();
         myAnimation = GetComponent<Animator>();        
-        knight = GetComponentInParent<KnightHP>();
-       
+        knight = GetComponentInParent<KnightHP>();             
 
         facingRight = true;       
         
@@ -69,10 +69,12 @@ public class KnightController : MonoBehaviour
         if(Input.GetKey(KeyCode.LeftShift) && move != 0){           
             DashDirection = (int)move;
             myAnimation.SetBool("iskey", true);
-            myKnight.velocity= new Vector2 (DashDirection * dashForce, myKnight.velocity.y);       
+            myKnight.velocity= new Vector2 (DashDirection * dashForce, myKnight.velocity.y);      
+            head.enabled = false; 
         }
         else {
             myAnimation.SetBool("iskey", false);
+            head.enabled = true;
         }
 
          //fireball action
