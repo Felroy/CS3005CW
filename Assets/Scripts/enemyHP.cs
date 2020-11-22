@@ -5,14 +5,19 @@ using UnityEngine.UI;
 
 public class enemyHP : MonoBehaviour
 { 
-    private float currentEnemyHP;
+    float currentEnemyHP;
     public float enemyMaxHP;
+    public bool turretDead = false;
     public GameObject enemyDeathFX;
     
     //enemy HP HUD variables
     public Slider enemyHPSlider;  
     public Gradient enemyGrad;
     public Image fill;
+
+    //enemy loot
+    public bool loot;
+    public GameObject potion;
 
     void Start()
     {
@@ -32,13 +37,22 @@ public class enemyHP : MonoBehaviour
         enemyHPSlider.value = currentEnemyHP;
         fill.color = enemyGrad.Evaluate(enemyHPSlider.normalizedValue);
         if (currentEnemyHP <= 0){            
-            kill();            
+            kill();
+            OnDestroy();
+            turretDead = true;            
         }
     }
 
     void kill(){
         Destroy(gameObject);
         //Instantiate(enemyDeathFX, transform.position, transform.rotation);
+        if(loot){
+            Instantiate(potion, transform.position, transform.rotation);
+        }
 
+    }
+
+    void OnDestroy(){
+        Destroy(transform.parent.gameObject);
     }
 }

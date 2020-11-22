@@ -60,6 +60,18 @@ public class KnightHP : MonoBehaviour{
 
     }
 
+    //recover hp on colliding with potion
+    public void recoverHP(float potionHP1){
+        currentHP += potionHP1;
+        if(currentHP > maxKnightHP){
+            currentHP = maxKnightHP;
+        }
+        hpSlider.value = currentHP;
+        isDamaged = false;
+        fill.color = gradient.Evaluate(hpSlider.normalizedValue);        
+
+    }
+
     public void kill(){
         if(!dead){
         deathAnim.SetBool("isDeado", !dead);

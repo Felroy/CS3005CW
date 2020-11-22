@@ -84,6 +84,17 @@ PrefabInstance:
       objectReference: {fileID: 6931452024713620604}
     - target: {fileID: 3408461860652639353, guid: 7430dd3713196d24986ed3f05cbd43b2,
         type: 3}
+      propertyPath: loot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408461860652639353, guid: 7430dd3713196d24986ed3f05cbd43b2,
+        type: 3}
+      propertyPath: potion
+      value: 
+      objectReference: {fileID: 178699131780323917, guid: da09cae44134035409981749a63e6667,
+        type: 3}
+    - target: {fileID: 3408461860652639353, guid: 7430dd3713196d24986ed3f05cbd43b2,
+        type: 3}
       propertyPath: enemyMaxHP
       value: 60
       objectReference: {fileID: 0}
