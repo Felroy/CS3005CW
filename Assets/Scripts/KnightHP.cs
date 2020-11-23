@@ -20,22 +20,24 @@ public class KnightHP : MonoBehaviour{
     public Gradient gradient;
     public Image fill;    
 
+    //sfx
+    public AudioClip losingHP;
+    AudioSource audiosrc;
 
-    void Start()
-    {
+
+    void Start(){
         currentHP = maxKnightHP;
         deathMovement = GetComponent<KnightController>();
 
         hpSlider.maxValue = maxKnightHP;
         hpSlider.value = maxKnightHP;
-
         fill.color = gradient.Evaluate(1f);
-
         isDamaged = false;
+
+        audiosrc = GetComponent<AudioSource>();
     }
     
-    void Update()
-    {
+    void Update(){
         if(isDamaged){
             hitSplat.color = splatColor;
         }
@@ -49,7 +51,11 @@ public class KnightHP : MonoBehaviour{
         if(damage <= 0){
             return;
         }        
-        currentHP -= damage;
+        currentHP -= damage; 
+        //audio code      
+        audiosrc.clip = losingHP;
+        audiosrc.PlayOneShot(losingHP); 
+        //       
         hpSlider.value = currentHP;
         isDamaged = true;
         fill.color = gradient.Evaluate(hpSlider.normalizedValue);        

@@ -6,8 +6,7 @@ using UnityEngine.UI;
 public class enemyHP : MonoBehaviour
 { 
     float currentEnemyHP;
-    public float enemyMaxHP;
-    public bool turretDead = false;
+    public float enemyMaxHP;    
     public GameObject enemyDeathFX;
     
     //enemy HP HUD variables
@@ -38,8 +37,7 @@ public class enemyHP : MonoBehaviour
         fill.color = enemyGrad.Evaluate(enemyHPSlider.normalizedValue);
         if (currentEnemyHP <= 0){            
             kill();
-            OnDestroy();
-            turretDead = true;            
+            OnDestroy();                      
         }
     }
 

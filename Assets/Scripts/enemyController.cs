@@ -54,7 +54,7 @@ public class enemyController : MonoBehaviour
             isCharging = true;
             chargeTimeStart = Time.time + chargeTime;
         }
-    }
+    }    
 
     void OnTriggerExit2D(Collider2D other){
         if(other.tag == "Player"){

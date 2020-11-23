@@ -35,4 +35,15 @@ public class ParticleLauncher : MonoBehaviour
             }
         }
     }
+
+    void OnTriggerStay2D(Collider2D other){
+        if(other.tag == "Player" && nextShootTime < Time.time){
+            nextShootTime = Time.time + shootTime;
+            if(Random.Range(0, 10) >= shootRNG){
+                
+                Instantiate(particle, shootFrom.position, Quaternion.identity);
+                turrentAnim.SetTrigger("shoot");
+            }
+        }
+    }
 }
