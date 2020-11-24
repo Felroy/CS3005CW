@@ -10,27 +10,7 @@ public class turrentController : MonoBehaviour
     
     bool canFlip = true;
     bool facingRight = false;
-    private float flipRate = 2f;
-    private float nextFlip = 0f;
-        void Start()
-    {
-       
-        
-    }
-
-    // Update is called once per frame
-      void FixedUpdate()
-    {
-                //if(Time.time > nextFlip){
-            //if(Random.Range(0, 10) >= 5){
-           //     flipFaceDir();
-           // }
-         //   nextFlip = Time.time + flipRate;
-       // }
-        
-        
-    }
-
+   
     void OnTriggerEnter2D(Collider2D other){
         if(other.tag == "Player"){
             if(facingRight && other.transform.position.x < transform.position.x){
@@ -44,7 +24,7 @@ public class turrentController : MonoBehaviour
         }
     }
 
-     void OnTriggerExit2D(Collider2D other){
+    void OnTriggerExit2D(Collider2D other){
         if(other.tag == "Player"){
             canFlip = true;                        
         }

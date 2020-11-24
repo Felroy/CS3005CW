@@ -151,7 +151,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 40, y: 7}
+  m_Size: {x: 40, y: 10}
   m_EdgeRadius: 0
 --- !u!114 &725827889091866561
 MonoBehaviour:
@@ -328,7 +328,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyMaxHP: 60
-  turretDead: 0
   enemyDeathFX: {fileID: 0}
   enemyHPSlider: {fileID: 4183921226440426571}
   enemyGrad:
