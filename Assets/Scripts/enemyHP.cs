@@ -5,14 +5,19 @@ using UnityEngine.UI;
 
 public class enemyHP : MonoBehaviour
 { 
-    private float currentEnemyHP;
-    public float enemyMaxHP;
+    float currentEnemyHP;
+    public float enemyMaxHP;    
     public GameObject enemyDeathFX;
+    
+    //enemy HP HUD variables
     public Slider enemyHPSlider;  
     public Gradient enemyGrad;
     public Image fill;
-    
-    // Start is called before the first frame update
+
+    //enemy loot
+    public bool loot;
+    public GameObject potion;
+
     void Start()
     {
         currentEnemyHP = enemyMaxHP;
@@ -20,12 +25,6 @@ public class enemyHP : MonoBehaviour
         enemyHPSlider.value = currentEnemyHP;
 
         fill.color = enemyGrad.Evaluate(1f);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void takeDamage(float damage){
@@ -36,16 +35,22 @@ public class enemyHP : MonoBehaviour
 
         enemyHPSlider.value = currentEnemyHP;
         fill.color = enemyGrad.Evaluate(enemyHPSlider.normalizedValue);
-        if (currentEnemyHP <= 0){
-            
+        if (currentEnemyHP <= 0){            
             kill();
-            
+            OnDestroy();                      
         }
     }
 
     void kill(){
         Destroy(gameObject);
         //Instantiate(enemyDeathFX, transform.position, transform.rotation);
+        if(loot){
+            Instantiate(potion, transform.position, transform.rotation);
+        }
 
+    }
+
+    void OnDestroy(){
+        Destroy(transform.parent.gameObject);
     }
 }

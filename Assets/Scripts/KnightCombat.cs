@@ -4,27 +4,19 @@ using UnityEngine;
 
 public class KnightCombat : MonoBehaviour
 {
+    //attack variables
     public Animator animation1;
     public Transform attackLoc;
     public float attackRange = 0.5f;
     public float attackDamage;
     public LayerMask enemy;
-
-    //jumping
-    public bool grounded;
-    void Start(){
-        
-    }
-
+    
     void Update()
     {
         attackCombat();
-    }
-
-    void FixedUpdate(){
-       
-    }
-
+    }   
+    
+    //attack when mouse0/left click is clicked
     public void attackCombat(){
         if(Input.GetKeyDown(KeyCode.Mouse0)){
             Attack();
@@ -32,30 +24,20 @@ public class KnightCombat : MonoBehaviour
             for(int i = 0; i < damagedEnemy.Length; i++){
                 damagedEnemy[i].GetComponent<enemyHP>().takeDamage(attackDamage);
             }
-        }       
-
-
-
+        } 
     }
-
 
    void Attack(){
-
-        animation1.SetTrigger("Attack");    
-                   
-
-    }    
-
+        animation1.SetTrigger("Attack");  
+    }      
     
-
+    //draw wire sphere to detect enemy within attack radius
     void OnDrawGizmosSelected(){
-    if(attackLoc == null){
+        if(attackLoc == null){
         return;
-    }
-    
+    }    
     Gizmos.DrawWireSphere(attackLoc.position, attackRange);
 }
-
 }
 
 

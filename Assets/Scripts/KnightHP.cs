@@ -3,43 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class KnightHP : MonoBehaviour
-{
+public class KnightHP : MonoBehaviour{
+    private float currentHP;
     public float maxKnightHP;
     public Animator deathAnim;
-    private float currentHP;
+    
     KnightController deathMovement;
 
     //playerHPUI HUD variables
     private bool isDamaged;
-    public bool dead;
-  
+    public bool dead;  
     Color splatColor = new Color(15f, 0f, 0f, 0.5f);
-    float fade = 5f;
+    float fade = 3f;
     public Slider hpSlider;
     public Image hitSplat;
     public Gradient gradient;
-    public Image fill;
-    
+    public Image fill;    
+
+    //sfx
+    public AudioClip losingHP;
+    AudioSource audiosrc;
 
 
-    void Start()
-    {
+    void Start(){
         currentHP = maxKnightHP;
         deathMovement = GetComponent<KnightController>();
 
         hpSlider.maxValue = maxKnightHP;
         hpSlider.value = maxKnightHP;
-
         fill.color = gradient.Evaluate(1f);
-
         isDamaged = false;
 
+        audiosrc = GetComponent<AudioSource>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
+    
+    void Update(){
         if(isDamaged){
             hitSplat.color = splatColor;
         }
@@ -52,19 +50,31 @@ public class KnightHP : MonoBehaviour
     public void takeDamage(float damage){
         if(damage <= 0){
             return;
-        }
-        
-        currentHP -= damage;
+        }        
+        currentHP -= damage; 
+        //audio code      
+        audiosrc.clip = losingHP;
+        audiosrc.PlayOneShot(losingHP); 
+        //       
         hpSlider.value = currentHP;
         isDamaged = true;
-        fill.color = gradient.Evaluate(hpSlider.normalizedValue);
+        fill.color = gradient.Evaluate(hpSlider.normalizedValue);        
 
-        
-
-        if (currentHP <= 0){
-                      
+        if (currentHP <= 0){                      
             kill();
         }
+
+    }
+
+    //recover hp on colliding with potion
+    public void recoverHP(float potionHP1){
+        currentHP += potionHP1;
+        if(currentHP > maxKnightHP){
+            currentHP = maxKnightHP;
+        }
+        hpSlider.value = currentHP;
+        isDamaged = false;
+        fill.color = gradient.Evaluate(hpSlider.normalizedValue);        
 
     }
 

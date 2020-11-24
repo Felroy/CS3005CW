@@ -16,9 +16,9 @@ TagManager:
   - 
   - earth
   - basicEnemy
-  - 
-  - 
-  - 
+  - turret
+  - projectile
+  - background
   - 
   - 
   - 
@@ -41,4 +41,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: turrent layer
+    uniqueID: 2135370055
     locked: 0
