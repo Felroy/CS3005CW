@@ -11,6 +11,7 @@ public class KnightHP : MonoBehaviour{
     KnightController deathMovement;
 
     //playerHPUI HUD variables
+    public Text deathText;
     private bool isDamaged;
     public bool dead;  
     Color splatColor = new Color(15f, 0f, 0f, 0.5f);
@@ -23,6 +24,9 @@ public class KnightHP : MonoBehaviour{
     //sfx
     public AudioClip losingHP;
     AudioSource audiosrc;
+    
+    //respawn
+    public Respawn respawnManager;    
 
 
     void Start(){
@@ -83,6 +87,11 @@ public class KnightHP : MonoBehaviour{
         deathAnim.SetBool("isDeado", !dead);
         Destroy(gameObject, 1);
         dead = true;
+        hitSplat.color = splatColor;
+
+        Animator gameOver = deathText.GetComponent<Animator>();
+        gameOver.SetTrigger("gameOver");
+        respawnManager.restartScene();
         }
 
     }
