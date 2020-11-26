@@ -96,7 +96,7 @@ PrefabInstance:
     - target: {fileID: 3408461860652639353, guid: 7430dd3713196d24986ed3f05cbd43b2,
         type: 3}
       propertyPath: enemyMaxHP
-      value: 60
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3408461860652639353, guid: 7430dd3713196d24986ed3f05cbd43b2,
         type: 3}
