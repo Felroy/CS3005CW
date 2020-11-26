@@ -41,7 +41,7 @@ public class enemyController : MonoBehaviour
         
     }
 
-    void OnTriggerEnter2D(Collider2D other){
+    void OnTriggerEnter2D(Collider2D other){       
         if(other.tag == "Player"){
             if(facingRight && other.transform.position.x < transform.position.x){
                 flipFaceDir();
@@ -54,18 +54,21 @@ public class enemyController : MonoBehaviour
             isCharging = true;
             chargeTimeStart = Time.time + chargeTime;
         }
+        
     }    
 
     void OnTriggerExit2D(Collider2D other){
+        
         if(other.tag == "Player"){
             canFlip = true;
             isCharging = false;
             enemyRB.velocity = new Vector2(0f, 0f);
             enemyAnim.SetBool("isAttacking", isCharging);
         }
+        
     }
 
-    void OnTriggerStay2D(Collider2D other){
+    void OnTriggerStay2D(Collider2D other){        
         if(other.tag == "Player"){
             if(chargeTimeStart < Time.time){
                 if(!facingRight){
@@ -80,6 +83,7 @@ public class enemyController : MonoBehaviour
                 enemyAnim.SetBool("isAttacking", isCharging);
             }
         }
+        
     }
 
     void flipFaceDir(){

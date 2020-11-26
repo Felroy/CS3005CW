@@ -40,11 +40,12 @@ public class enemyHP : MonoBehaviour
         }
     }
 
-    void kill(){       
-        Destroy(this.gameObject);
+    void kill(){              
+        Destroy(transform.parent.gameObject);
         //Instantiate(enemyDeathFX, transform.position, transform.rotation);
         if(loot){
             Instantiate(potion, transform.position, transform.rotation);
         }
+        
    }
 }

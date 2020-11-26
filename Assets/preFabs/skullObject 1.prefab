@@ -455,7 +455,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyMaxHP: 60
-  enemyDeathFX: {fileID: 0}
   enemyHPSlider: {fileID: 892302528640914376}
   enemyGrad:
     serializedVersion: 2
