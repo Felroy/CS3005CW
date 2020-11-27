@@ -16,6 +16,7 @@ public class BossHP : MonoBehaviour
     public Gradient enemyGrad;
     public Image fill;
     public Text winText;
+    public Text bossName;
     public bool bossDead;
 
 
@@ -56,6 +57,7 @@ public class BossHP : MonoBehaviour
         //death animation, create Animator something; something.GetComponent<Animator>(); or just GetComponent<Animator>().SetBool("bossDead", true); ##remember to create bossDead bool on animator 
         GetComponent<Animator>().SetBool("bossDead", true);    
         Destroy(gameObject, 1);
+        bossName.enabled = false;
         Animator gameOver = winText.GetComponent<Animator>();
         gameOver.SetTrigger("win");
         if(loot){
