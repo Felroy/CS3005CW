@@ -9,7 +9,7 @@ public class turrentController : MonoBehaviour
     //flip function variables
     
     bool canFlip = true;
-    bool facingRight = false;
+    bool facingRight;
    
     void OnTriggerEnter2D(Collider2D other){
         if(other.tag == "Player"){

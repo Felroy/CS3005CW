@@ -24,6 +24,7 @@ public class KnightCombat : MonoBehaviour
             for(int i = 0; i < damagedEnemy.Length; i++){
                 damagedEnemy[i].GetComponent<enemyHP>().takeDamage(attackDamage);
             }
+            
         } 
     }
 

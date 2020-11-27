@@ -4,39 +4,27 @@ using UnityEngine;
 
 public class ParticleController : MonoBehaviour
 {
-    public GameObject bound;
+    public GameObject knio;
+    
     public Transform Knight;
     public float speed = 3f;
     public float rotationSpeed = 1000f;
     private Rigidbody2D particle;
+    Vector2 knightDir;
+    Vector2 normKnightDir;        
     
-    outOfBounds checkPlayer;
-    // Start is called before the first frame update
     void Start()
     {
+        //find components
         Knight = GameObject.FindGameObjectWithTag("Player").transform;
         particle = GetComponent<Rigidbody2D>();
-        //checkPlayer = GetComponent<outOfBounds>();                       
-        
-    }
+        knio = GameObject.FindGameObjectWithTag("Player"); 
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        if(!bound.GetComponent<outOfBounds>().dead){
-            return;            
-        } else {
-            Vector2 direction = (Vector2)Knight.position - particle.position;
-            direction.Normalize();
-            float rotation = Vector3.Cross(direction, transform.up).z;
-
-            particle.angularVelocity = -rotation * rotationSpeed;
-            particle.velocity = transform.up * speed;
-            
-        }
-        
-    }
-
+        //set velocity to particles
+        knightDir = (Knight.transform.position - transform.position);
+        normKnightDir = knightDir.normalized * speed;
+        particle.velocity = new Vector2 (normKnightDir.x, normKnightDir.y);
+    }  
     void OnTriggerEnter2D(Collider2D other){
         if(other.tag == "Player"){
         kill();            

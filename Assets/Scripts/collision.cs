@@ -22,6 +22,10 @@ public class collision : MonoBehaviour{
                 enemyHP hurtEnemy = other.gameObject.GetComponent<enemyHP>();
                 hurtEnemy.takeDamage(fireDamage);
             }
+            else if(other.tag == "Boss"){
+                BossHP hurtBoss = other.gameObject.GetComponent<BossHP>();
+                hurtBoss.takeDamageBoss(fireDamage);
+            }
         }
     }
 
@@ -33,6 +37,10 @@ public class collision : MonoBehaviour{
             if(other.tag == "Enemy"){
                 enemyHP hurtEnemy = other.gameObject.GetComponent<enemyHP>();
                 hurtEnemy.takeDamage(fireDamage);
+            }
+            else if(other.tag == "Boss"){
+                BossHP hurtBoss = other.gameObject.GetComponent<BossHP>();
+                hurtBoss.takeDamageBoss(fireDamage);
             }
         }
     }
