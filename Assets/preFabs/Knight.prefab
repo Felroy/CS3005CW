@@ -245,7 +245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animation1: {fileID: 4963487422303426173}
   attackLoc: {fileID: 4963487422484293845}
-  attackRange: 1.3
+  attackRange: 1.8
   attackDamage: 10
   enemy:
     serializedVersion: 2
@@ -264,6 +264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxKnightHP: 60
   deathAnim: {fileID: 4963487422303426173}
+  deathText: {fileID: 0}
   dead: 0
   hpSlider: {fileID: 0}
   hitSplat: {fileID: 0}
@@ -298,6 +299,7 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   fill: {fileID: 0}
   losingHP: {fileID: 8300000, guid: cda1b11c0b18ae343bcf26207800b446, type: 3}
+  respawnManager: {fileID: 0}
 --- !u!58 &4963487422303426169
 CircleCollider2D:
   m_ObjectHideFlags: 0

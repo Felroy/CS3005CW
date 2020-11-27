@@ -13,6 +13,7 @@ public class enemyHP : MonoBehaviour
     public Slider enemyHPSlider;  
     public Gradient enemyGrad;
     public Image fill;
+    
 
     //enemy loot
     public bool loot;
@@ -23,7 +24,7 @@ public class enemyHP : MonoBehaviour
         currentEnemyHP = enemyMaxHP;
         enemyHPSlider.maxValue = currentEnemyHP;
         enemyHPSlider.value = currentEnemyHP;    
-
+        
         fill.color = enemyGrad.Evaluate(1f);
     }
 
@@ -35,6 +36,8 @@ public class enemyHP : MonoBehaviour
 
         enemyHPSlider.value = currentEnemyHP;
         fill.color = enemyGrad.Evaluate(enemyHPSlider.normalizedValue);
+
+        
         if (currentEnemyHP <= 0){            
             kill();                           
         }

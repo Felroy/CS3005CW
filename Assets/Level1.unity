@@ -386,6 +386,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 725827889091866562, guid: 5ea2658c9a43d2b44b7dd17427475956,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 725827889091866590, guid: 5ea2658c9a43d2b44b7dd17427475956,
         type: 3}
       propertyPath: m_RootOrder
@@ -3441,7 +3446,7 @@ PrefabInstance:
     - target: {fileID: 4963487422303426145, guid: af4c676fcabb2b9409cd951758004689,
         type: 3}
       propertyPath: maxKnightHP
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4963487422303426145, guid: af4c676fcabb2b9409cd951758004689,
         type: 3}

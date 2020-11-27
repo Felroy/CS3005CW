@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KnightCombat : MonoBehaviour
+public class KnightCombatV2 : MonoBehaviour
 {
     //attack variables
     public Animator animation1;
@@ -19,12 +19,11 @@ public class KnightCombat : MonoBehaviour
     //attack when mouse0/left click is clicked
     public void attackCombat(){
         if(Input.GetKeyDown(KeyCode.Mouse0)){
-            Attack();
-            Collider2D[] damagedEnemy = Physics2D.OverlapCircleAll(attackLoc.position, attackRange, enemy);
-            for(int i = 0; i < damagedEnemy.Length; i++){
-                damagedEnemy[i].GetComponent<enemyHP>().takeDamage(attackDamage);
+            Attack();            
+            Collider2D[] damagedBoss = Physics2D.OverlapCircleAll(attackLoc.position, attackRange, enemy);
+            for(int i = 0; i < damagedBoss.Length; i++){
+                damagedBoss[i].GetComponent<BossHP>().takeDamageBoss(attackDamage);
             }
-            
         } 
     }
 
