@@ -13,7 +13,7 @@ public class enemyHP : MonoBehaviour
     public Slider enemyHPSlider;  
     public Gradient enemyGrad;
     public Image fill;
-    
+        
 
     //enemy loot
     public bool loot;
@@ -32,8 +32,6 @@ public class enemyHP : MonoBehaviour
 
         enemyHPSlider.gameObject.SetActive(true);
         currentEnemyHP = currentEnemyHP - damage;
-        Debug.Log(currentEnemyHP);
-
         enemyHPSlider.value = currentEnemyHP;
         fill.color = enemyGrad.Evaluate(enemyHPSlider.normalizedValue);
 
@@ -45,7 +43,6 @@ public class enemyHP : MonoBehaviour
 
     void kill(){              
         Destroy(transform.parent.gameObject);
-        //Instantiate(enemyDeathFX, transform.position, transform.rotation);
         if(loot){
             Instantiate(potion, transform.position, transform.rotation);
         }

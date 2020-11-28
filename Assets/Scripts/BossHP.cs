@@ -9,23 +9,21 @@ public class BossHP : MonoBehaviour
     float phase2;
     public float BossMaxHP = 100; 
     Rigidbody2D bossRB;   
-
-    
+        
     //enemy HP HUD variables
     public Slider enemyHPSlider;  
     public Gradient enemyGrad;
     public Image fill;
     public Text winText;
     public Text bossName;
-    public bool bossDead;
-
-
+    public MenuManager menu;
+        
     //enemy loot
     public bool loot;
     public GameObject potion;
 
     void Start()
-    {
+    {   
         bossRB = GetComponent<Rigidbody2D>();
         currentBossHP = BossMaxHP;
         enemyHPSlider.maxValue = currentBossHP;
@@ -60,6 +58,9 @@ public class BossHP : MonoBehaviour
         bossName.enabled = false;
         Animator gameOver = winText.GetComponent<Animator>();
         gameOver.SetTrigger("win");
+        menu.enableMenu();
+       
+                
         if(loot){
             Instantiate(potion, transform.position, transform.rotation);
         }        

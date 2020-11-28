@@ -21,9 +21,6 @@ public class BossController : MonoBehaviour
     } 
 
     void flipDir(){
-        Vector3 facingX = transform.localScale;
-        facingX.z *= -1f;
-        transform.localScale = facingX; 
         transform.Rotate(0f, 180f, 0f);       
         }
 }
