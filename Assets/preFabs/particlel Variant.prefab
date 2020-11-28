@@ -25,6 +25,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -4413457769214025230, guid: 15d955ae3a397c44080685762439757b,
         type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4413457769214025230, guid: 15d955ae3a397c44080685762439757b,
+        type: 3}
       propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
@@ -32,6 +37,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_CollisionDetection
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5577934522268194360, guid: 15d955ae3a397c44080685762439757b,
+        type: 3}
+      propertyPath: damageRecoil
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5577934522268194364, guid: 15d955ae3a397c44080685762439757b,
         type: 3}
