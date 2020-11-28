@@ -319,7 +319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyBody: {fileID: 4350748557103720029}
   enemySpeed: 5
-  chargeTime: 2
+  chargeTime: 0.5
 --- !u!1 &4350748557103720029
 GameObject:
   m_ObjectHideFlags: 0

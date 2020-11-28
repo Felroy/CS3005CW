@@ -8,6 +8,7 @@ public class BossHP : MonoBehaviour
     float currentBossHP;
     float phase2;
     public float BossMaxHP = 100; 
+    public bool iframes = false;
     Rigidbody2D bossRB;   
         
     //enemy HP HUD variables
@@ -34,10 +35,13 @@ public class BossHP : MonoBehaviour
     }
 
     public void takeDamageBoss(float damage){
+        if(iframes){
+            return;
+        }
 
         enemyHPSlider.gameObject.SetActive(true);
         currentBossHP = currentBossHP - damage;
-        Debug.Log(currentBossHP);
+        GetComponent<Animator>().SetTrigger("hurt");
 
         enemyHPSlider.value = currentBossHP;
         fill.color = enemyGrad.Evaluate(enemyHPSlider.normalizedValue);
@@ -52,7 +56,6 @@ public class BossHP : MonoBehaviour
 
     void killBoss(){
         bossRB.velocity = Vector2.zero;
-        //death animation, create Animator something; something.GetComponent<Animator>(); or just GetComponent<Animator>().SetBool("bossDead", true); ##remember to create bossDead bool on animator 
         GetComponent<Animator>().SetBool("bossDead", true);    
         Destroy(gameObject, 1);
         bossName.enabled = false;

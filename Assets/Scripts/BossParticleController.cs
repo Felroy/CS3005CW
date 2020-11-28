@@ -8,7 +8,6 @@ public class BossParticleController : MonoBehaviour
     
     public Transform Knight;
     public float speed = 8f;
-    public float rotationSpeed = 1000f;
     private Rigidbody2D particle;
     Vector2 knightDir;
     Vector2 normKnightDir;
@@ -28,12 +27,9 @@ public class BossParticleController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate(){       
         if (knio != null){                                    
-        Vector2 direction = (Vector2)Knight.position - particle.position;
-        direction.Normalize();
-        float rotation = Vector3.Cross(direction, transform.up).z;
-
-        particle.angularVelocity = -rotation * rotationSpeed;
-        particle.velocity = transform.up * speed;   
+        knightDir = (Knight.transform.position - transform.position);
+        normKnightDir = knightDir.normalized * speed;
+        particle.velocity = new Vector2 (normKnightDir.x, normKnightDir.y); 
     }
     }
 

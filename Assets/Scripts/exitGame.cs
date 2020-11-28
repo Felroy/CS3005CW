@@ -13,7 +13,9 @@ public class exitGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKey("escape")){
+            exit();
+        }
     }
 
     public void exit(){
